@@ -1,2 +1,3 @@
 # floating-point-precision-template
-Template for Individual Homework #4
+
+Template/Skeleton for Individual Homework #4

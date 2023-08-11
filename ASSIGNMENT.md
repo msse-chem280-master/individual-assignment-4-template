@@ -1,7 +1,5 @@
 # Individual Homework Assignment 4
 
-## Individual Homework Assignment
-
 This should be completed by each student individually. **You may not work on
 this assignment in groups.** Individual assignments are due one week after
 being assigned. Remember that your assignment should be well documented
@@ -16,11 +14,10 @@ As you have seen, output streams (like `std::cout`) can chop off significant dig
 from floating point numbers. We can test this by writing numbers to a file
 and then reading them in again, then comparing the numbers.
 
-1. Generate a `std::vector<double>` containing some number of random numbers in the
-   range (-10.0 , 10.0). 20 numbers should be good.
+1. Create a `std::vector<double>` containing 20 random numbers in the range (-10.0 , 10.0).
 
 1. Write a function that writes a `std::vector<double>` to a file. **Hint** you likely want
-   to write the `size()` of the vector to the file first, so the reader known how many
+   to write the `size()` of the vector to the file first, so the reader knows how many
    numbers to read.
 
 1. Write a function that reads that file and returns the `std::vector<double>` of
@@ -32,5 +29,47 @@ and then reading them in again, then comparing the numbers.
 
 1. Loop over the numbers of both vectors and compare all the elements. Are they equal?
 
-1. You can change the output precision by calling `.precision(n)` on the output filestream.
+1. You can change the output precision by calling `.precision(n)` on the output filestream
+   (see https://en.cppreference.com/w/cpp/io/ios_base/precision)
    What is `n` that causes both the `std::vectors` to be exactly the same? 
+
+## Reading and Writing to files
+
+In C++, files can be written to and read using file streams (`fstream`). We have seen streams before,
+with `std::cout` (which is an `iostream`). File streams behave in a similar way.
+
+To use file streams, you must include the `fstream` header. Below is an example of writing and
+reading from a file.
+
+```
+#include <iostream>
+#include <fstream>
+#include <string>
+
+int main(void)
+{
+    // output stream - can only output to the file
+    std::ofstream out_file("test.txt");
+
+    int i = 10;
+
+    // use stream insertion operator
+    out_file << "hello" << std::endl << i << std::endl;
+
+    // closes file, and flushes contents
+    out_file.close();
+
+    // input stream - can only read from the file
+    std::ifstream in_file("test.txt");
+
+    int j;
+    std::string s;
+
+    // use stream extraction operator >>
+    in_file >> s >> j;
+
+    std::cout << "read from file: " << s << " " << j << std::endl;
+
+    in_file.close();
+}
+```

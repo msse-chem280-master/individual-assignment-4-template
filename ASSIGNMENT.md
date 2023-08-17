@@ -24,7 +24,7 @@ and then reading them in again, then comparing the numbers.
    file contents. Use this function to re-read the data written in the previous step,
    storing into a different `std::vector<double>`.
 
-1. Check that the sizes of the vector are the same. What might be a good way to make sure
+1. Check that the sizes of the vectors are the same. What might be a good way to make sure
    this is true?
 
 1. Loop over the numbers of both vectors and compare all the elements. Are they equal?
